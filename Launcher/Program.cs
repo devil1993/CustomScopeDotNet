@@ -16,7 +16,6 @@ try
         var createdTask = await HandleConnection(listener, WorkerCreator.CreateProcessorJob, MessageReader.ReadMessage);
         tasks.Add(createdTask);
     } while (true);
-
 }
 catch (Exception e)
 {
@@ -34,6 +33,7 @@ static async Task<Task> HandleConnection(Socket listener, Func<string, Task> exe
     using var handler = await listener.AcceptAsync();
     var data = await reader(handler);
     var createdTask = executor(data);
+    await handler.SendAsync(Encoding.ASCII.GetBytes("Message received"), SocketFlags.None);
     handler.Shutdown(SocketShutdown.Both);
     handler.Close();
     return createdTask;

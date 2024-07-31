@@ -12,6 +12,8 @@ namespace Launcher
         {
             return Task.Factory.StartNew((data) =>
             {
+                var scope = ScopedProvider.CreateScope();
+                //scope.ServiceProvider.GetService<Processor>().Process((string)data);
                 System.Threading.Thread.Sleep(5000);
                 Console.WriteLine($"Received: {data}\n{Task.CurrentId}");
             }, (data));
