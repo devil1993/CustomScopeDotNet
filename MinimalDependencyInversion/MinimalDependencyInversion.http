@@ -1,0 +1,6 @@
+@MinimalDependencyInversion_HostAddress = http://localhost:5265
+
+GET {{MinimalDependencyInversion_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
