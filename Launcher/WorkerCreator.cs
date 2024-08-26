@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Launcher
+namespace NonAspNetScopedDependency
 {
     public class WorkerCreator
     {
@@ -14,9 +14,9 @@ namespace Launcher
             {
                 var scope = ScopedProvider.CreateScope();
                 //scope.ServiceProvider.GetService<Processor>().Process((string)data);
-                System.Threading.Thread.Sleep(5000);
+                Thread.Sleep(5000);
                 Console.WriteLine($"Received: {data}\n{Task.CurrentId}");
-            }, (data));
+            }, data);
         }
     }
 }

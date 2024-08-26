@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Launcher
+namespace NonAspNetScopedDependency
 {
     public class MessageReader
     {
@@ -15,7 +15,7 @@ namespace Launcher
             int numByte;
             do
             {
-                byte[] bytes = new Byte[1024];
+                byte[] bytes = new byte[1024];
                 numByte = await connection.ReceiveAsync(bytes);
                 if (numByte <= 0)
                     break;

@@ -6,14 +6,14 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Launcher
+namespace NonAspNetScopedDependency
 {
     public static class SocketManager
     {
         public static Socket CreateSocket(IPAddress address, int port)
         {
             IPEndPoint localEndPoint = new IPEndPoint(address, port);
-            var socket =  new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            var socket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             socket.Bind(localEndPoint);
             return socket;
         }

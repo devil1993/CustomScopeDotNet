@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Launcher
+namespace NonAspNetScopedDependency
 {
     public class ScopedProvider
     {
