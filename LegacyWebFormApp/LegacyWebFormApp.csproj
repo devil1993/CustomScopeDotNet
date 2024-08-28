@@ -111,7 +111,6 @@
     <Compile Include="BusinessLogics\TenantProvider.cs" />
     <Compile Include="Core\TenantInfo.cs" />
     <Compile Include="DataAccess\UserDataAccess.cs" />
-    <Compile Include="Core\UserInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

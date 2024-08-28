@@ -1,6 +1,4 @@
-﻿<asp:Label runat="server" Text="Label"></asp:Label>
-
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="LegacyWebFormApp.Pages.UserProfile" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="LegacyWebFormApp.Pages.UserProfile" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lWelcomeMsg" runat="server"></asp:Label>
+            <asp:Label ID="lWelcomeMsg" runat="server" Text="" Font-Size="X-Large" Font-Italic="True" ForeColor="Blue"></asp:Label>
         </div>
     </form>
 </body>

@@ -5,6 +5,7 @@ using System.Web;
 
 namespace LegacyWebFormApp.DataAccess
 {
+    using LegacyWebFormApp.Core;
     public class TenantDataAccess
     {
         private string dbConnection;

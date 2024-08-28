@@ -1,4 +1,4 @@
-﻿namespace LegacyWebFormApp.DataAccess
+﻿namespace LegacyWebFormApp.Core
 {
     public class TenantInfo
     {

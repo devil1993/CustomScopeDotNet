@@ -2,6 +2,7 @@
 
 namespace LegacyWebFormApp.DataAccess
 {
+    using LegacyWebFormApp.Core;
     public class TenantProvider
     {
         private TenantInfo currentTenant;
@@ -11,7 +12,7 @@ namespace LegacyWebFormApp.DataAccess
         }
         public string GenerateWelcomeMessage(string userName)
         {
-            return $"Welcome to your {currentTenant.Name} dashboard, {userName}";
+            return $"Welcome to your \"{currentTenant.Name}\" dashboard, {userName}";
         }
     }
 }
