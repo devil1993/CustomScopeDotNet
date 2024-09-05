@@ -121,7 +121,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusinessLogics\UserDashboardProvider.cs" />
-    <Compile Include="Core\State.cs" />
+    <Compile Include="Core\LegacyState.cs" />
     <Compile Include="DataAccess\TenantDataAccess.cs" />
     <Compile Include="BusinessLogics\TenantProvider.cs" />
     <Compile Include="Core\TenantInfo.cs" />

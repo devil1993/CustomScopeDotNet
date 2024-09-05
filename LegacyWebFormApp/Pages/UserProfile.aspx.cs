@@ -12,7 +12,7 @@ namespace LegacyWebFormApp.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            State state = State.FromSession(Session);
+            LegacyState state = LegacyState.FromSession(Session);
             var userDashboardProvider = new BusinessLogics.UserDashboardProvider();
 
             var welcomeMessage = userDashboardProvider.GetWelcomeMessage(state);

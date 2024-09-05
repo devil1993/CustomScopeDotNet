@@ -1,4 +1,6 @@
 ﻿using System;
+using LegacyWebFormApp.BusinessLogics;
+using LegacyWebFormApp.DataAccess;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LegacyWebFormApp.DIContainer
@@ -19,6 +21,12 @@ namespace LegacyWebFormApp.DIContainer
                     {
                         ServiceCollection coll = GetServiceCollection();
 
+                        coll.AddTransient<TenantProvider>();
+                        coll.AddTransient<UserDashboardProvider>();
+
+                        coll.AddTransient<TenantDataAccess>();
+                        coll.AddTransient<UserDataAccess>();
+
                         _provider = coll.BuildServiceProvider();
                     }
                 }
@@ -32,9 +40,8 @@ namespace LegacyWebFormApp.DIContainer
             return coll;
         }
 
-        public static IServiceScope CreateScope()
-        {
-            return _provider.CreateScope();
+        public static T GetRequiredService<T>(){
+            return _provider.GetRequiredService<T>();
         }
     }
 }

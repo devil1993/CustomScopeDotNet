@@ -8,16 +8,19 @@ namespace LegacyWebFormApp.DataAccess
     using LegacyWebFormApp.Core;
     public class TenantDataAccess
     {
-        private string dbConnection;
+        private readonly LegacyState state;
 
-        public TenantDataAccess(string dbConnection)
+        public TenantDataAccess(LegacyState state)
         {
-            this.dbConnection = dbConnection;
+            this.state = state;
         }
 
-        internal TenantInfo GetTenantInfo(string tenantId)
+        internal TenantInfo GetTenantInfo()
         {
-            // logic to fetch TenantInfo from database
+            var tenantId = this.state.TenantId;
+            var connectionString = this.state.DbConnection;
+            // logic to connect to database using connectionString
+            // fetch TenantInfo from database for the tenant with tenantId
             return new TenantInfo();
         }
     }

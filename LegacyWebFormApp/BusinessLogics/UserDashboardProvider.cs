@@ -9,15 +9,15 @@ namespace LegacyWebFormApp.BusinessLogics
 {
     public class UserDashboardProvider
     {
-        public string GetWelcomeMessage(State state)
+        public string GetWelcomeMessage(LegacyState state)
         {
-            var tenantDataAccess = new TenantDataAccess(state.DbConnection);
-            var tenantInfo = tenantDataAccess.GetTenantInfo(state.TenantId);
+            var tenantDataAccess = new TenantDataAccess(state);
+            var tenantInfo = tenantDataAccess.GetTenantInfo();
+
             var tenantProvider = new TenantProvider(tenantInfo);
+            var userDataAccess = new UserDataAccess(state);
 
-            var userDataAccess = new UserDataAccess(state.DbConnection);
-
-            var welcomeMessage = tenantProvider.GenerateWelcomeMessage(userDataAccess.GetUserName(state.UserId));
+            var welcomeMessage = tenantProvider.GenerateWelcomeMessage(userDataAccess.GetUserName());
 
             return welcomeMessage;
         }

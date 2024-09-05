@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LegacyWebFormApp.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,16 +8,17 @@ namespace LegacyWebFormApp.DataAccess
 {
     public class UserDataAccess
     {
-        private string dbConnection;
+        private LegacyState state;
 
-        public UserDataAccess(string dbConnection)
+        public UserDataAccess(LegacyState state)
         {
-            this.dbConnection = dbConnection;
+            this.state = state;
         }
 
-        internal string GetUserName(string userId)
+        internal string GetUserName()
         {
-            // logic to get the name of the user from database.
+            // logic to connect the database with state.DbConnection
+            // and get the name of the user using state.UserId
             return "Dummy UserName";
         }
     }
