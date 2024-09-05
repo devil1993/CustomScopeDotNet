@@ -1,4 +1,4 @@
-﻿namespace LegacyWebFormApp.Core
+﻿namespace BusinessLogics
 {
     public class TenantInfo
     {

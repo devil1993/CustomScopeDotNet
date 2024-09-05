@@ -1,8 +1,7 @@
 ﻿using System;
 
-namespace LegacyWebFormApp.DataAccess
+namespace BusinessLogics
 {
-    using LegacyWebFormApp.Core;
     public class TenantProvider
     {
         private TenantInfo currentTenant;

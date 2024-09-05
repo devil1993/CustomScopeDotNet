@@ -120,13 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BusinessLogics\UserDashboardProvider.cs" />
     <Compile Include="Core\LegacyState.cs" />
     <Compile Include="DataAccess\TenantDataAccess.cs" />
-    <Compile Include="BusinessLogics\TenantProvider.cs" />
-    <Compile Include="Core\TenantInfo.cs" />
     <Compile Include="DataAccess\UserDataAccess.cs" />
-    <Compile Include="DIContainer\ServiceProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,6 +146,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogics\BusinessLogics.csproj">
+      <Project>{11a4f51e-4e3d-4075-aa11-e06474cf8a6f}</Project>
+      <Name>BusinessLogics</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
