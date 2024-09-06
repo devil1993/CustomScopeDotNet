@@ -1,6 +1,7 @@
 ﻿using System;
-using LegacyWebFormApp.BusinessLogics;
+using BusinessLogics;
 using LegacyWebFormApp.DataAccess;
+using LegacyWebFormApp.DataAccess.Adapters;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LegacyWebFormApp.DIContainer
@@ -21,11 +22,10 @@ namespace LegacyWebFormApp.DIContainer
                     {
                         ServiceCollection coll = GetServiceCollection();
 
-                        coll.AddTransient<TenantProvider>();
-                        coll.AddTransient<UserDashboardProvider>();
+                        coll.AddTransient<ITenantDataAccess, TenantDataAccessAdapter>();
+                        coll.AddTransient<IUserDataAccess, UserDataAccessAdapter>();
 
-                        coll.AddTransient<TenantDataAccess>();
-                        coll.AddTransient<UserDataAccess>();
+                        coll.AddTransient<UserDashboardProvider>();
 
                         _provider = coll.BuildServiceProvider();
                     }

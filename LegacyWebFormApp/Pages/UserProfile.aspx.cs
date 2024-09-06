@@ -1,4 +1,7 @@
-﻿using LegacyWebFormApp.Core;
+﻿using BusinessLogics;
+using LegacyWebFormApp.Core;
+using LegacyWebFormApp.DataAccess.Adapters;
+using LegacyWebFormApp.DIContainer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +16,10 @@ namespace LegacyWebFormApp.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             LegacyState state = LegacyState.FromSession(Session);
-            var userDashboardProvider = new BusinessLogics.UserDashboardProvider();
 
-            var welcomeMessage = userDashboardProvider.GetWelcomeMessage(state);
+            var userDashboardProvider = ServiceProvider.GetRequiredService<UserDashboardProvider>();
+
+            var welcomeMessage = userDashboardProvider.GetWelcomeMessage();
 
             this.lWelcomeMsg.Text = welcomeMessage;
         }

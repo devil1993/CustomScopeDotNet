@@ -121,8 +121,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Core\LegacyState.cs" />
+    <Compile Include="DataAccess\Adapters\TenantDataAccessAdapter.cs" />
+    <Compile Include="DataAccess\Adapters\UserDataAccessAdapter.cs" />
     <Compile Include="DataAccess\TenantDataAccess.cs" />
     <Compile Include="DataAccess\UserDataAccess.cs" />
+    <Compile Include="DIContainer\ServiceProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
