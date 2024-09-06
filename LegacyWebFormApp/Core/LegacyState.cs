@@ -7,9 +7,9 @@ namespace LegacyWebFormApp.Core
 {
     public class LegacyState
     {
-        public string UserId { get; set; }
-        public string TenantId { get; set; }
-        public string DbConnection { get; set; }
+        public virtual string UserId { get; set; }
+        public virtual string TenantId { get; set; }
+        public virtual string DbConnection { get; set; }
 
         public static LegacyState FromSession(System.Web.SessionState.HttpSessionState session)
         {

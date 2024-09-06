@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Security.Policy;
 using BusinessLogics;
+using LegacyWebFormApp.Core;
 using LegacyWebFormApp.DataAccess;
 using LegacyWebFormApp.DataAccess.Adapters;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +28,8 @@ namespace LegacyWebFormApp.DIContainer
                         coll.AddTransient<IUserDataAccess, UserDataAccessAdapter>();
 
                         coll.AddTransient<UserDashboardProvider>();
+                        coll.AddScoped<LegacyStateWrapper>();
+                        coll.AddScoped<LegacyState, LegacyStateWrapper>();
 
                         _provider = coll.BuildServiceProvider();
                     }
@@ -42,6 +46,11 @@ namespace LegacyWebFormApp.DIContainer
 
         public static T GetRequiredService<T>(){
             return _provider.GetRequiredService<T>();
+        }
+
+        public static IServiceScope GetServiceScope()
+        {
+            return _provider.CreateScope();
         }
     }
 }

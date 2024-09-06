@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LegacyWebFormApp.Pages
 {
@@ -17,7 +18,12 @@ namespace LegacyWebFormApp.Pages
         {
             LegacyState state = LegacyState.FromSession(Session);
 
-            var userDashboardProvider = ServiceProvider.GetRequiredService<UserDashboardProvider>();
+            var scope = DIContainer.ServiceProvider.GetServiceScope();
+
+            var stateFromContainer = scope.ServiceProvider.GetRequiredService<LegacyStateWrapper>();
+            stateFromContainer.SetInternalState(state);
+
+            var userDashboardProvider = scope.ServiceProvider.GetRequiredService<UserDashboardProvider>();
 
             var welcomeMessage = userDashboardProvider.GetWelcomeMessage();
 
