@@ -20,7 +20,7 @@ namespace LegacyWebFormApp.Core
             // database connection for the corresponding tenant etc. 
             // For the shake of simplicity, we new up for the discusison.
 
-            return new LegacyState();
+            return new LegacyState() { TenantId = session.SessionID, DbConnection = "some db connection", UserId = Guid.NewGuid().ToString()}; 
         }
     }
 }

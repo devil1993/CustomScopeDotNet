@@ -11,7 +11,7 @@ namespace LegacyWebFormApp.DataAccess.Adapters
     {
         private readonly LegacyState state;
 
-        public UserDataAccessAdapter(LegacyState state)
+        public UserDataAccessAdapter(LegacyStateWrapper state)
         {
             this.state = state;
         }

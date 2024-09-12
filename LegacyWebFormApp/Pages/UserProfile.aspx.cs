@@ -18,16 +18,19 @@ namespace LegacyWebFormApp.Pages
         {
             LegacyState state = LegacyState.FromSession(Session);
 
-            var scope = DIContainer.ServiceProvider.GetServiceScope();
+            using (var scope = DIContainer.ServiceProvider.GetServiceScope())
+            {
+                var stateFromContainer = scope.ServiceProvider.GetRequiredService<LegacyStateWrapper>();
+                stateFromContainer.SetInternalState(state);
 
-            var stateFromContainer = scope.ServiceProvider.GetRequiredService<LegacyStateWrapper>();
-            stateFromContainer.SetInternalState(state);
+                var userDashboardProvider = scope.ServiceProvider.GetRequiredService<UserDashboardProvider>();
 
-            var userDashboardProvider = scope.ServiceProvider.GetRequiredService<UserDashboardProvider>();
+                var welcomeMessage = userDashboardProvider.GetWelcomeMessage();
 
-            var welcomeMessage = userDashboardProvider.GetWelcomeMessage();
+                this.lWelcomeMsg.Text = welcomeMessage;
+            }
 
-            this.lWelcomeMsg.Text = welcomeMessage;
+
         }
     }
 }

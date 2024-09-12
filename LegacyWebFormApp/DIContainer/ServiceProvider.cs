@@ -29,7 +29,7 @@ namespace LegacyWebFormApp.DIContainer
 
                         coll.AddTransient<UserDashboardProvider>();
                         coll.AddScoped<LegacyStateWrapper>();
-                        coll.AddScoped<LegacyState, LegacyStateWrapper>();
+                        //coll.AddScoped<LegacyState, LegacyStateWrapper>();
 
                         _provider = coll.BuildServiceProvider();
                     }
