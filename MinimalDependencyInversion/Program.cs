@@ -1,4 +1,6 @@
 
+using BusinessLogics;
+
 namespace MinimalDependencyInversion
 {
     public class Program
@@ -8,46 +10,41 @@ namespace MinimalDependencyInversion
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddAuthorization();
+            builder.Services.AddTransient<UserDashboardProvider>();
+            builder.Services.AddTransient<IUserDataAccess, ModernUserDataAccess>();
+            builder.Services.AddTransient<ITenantDataAccess, ModernTenantDataAccess>();
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
-
-            var summaries = new[]
+            app.MapGet("/UserDashboard/Welcome", (HttpContext httpContext, UserDashboardProvider udp) =>
             {
-                "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-            };
-
-            app.MapGet("/weatherforecast", (HttpContext httpContext) =>
-            {
-                var forecast = Enumerable.Range(1, 5).Select(index =>
-                    new WeatherForecast
-                    {
-                        Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                        TemperatureC = Random.Shared.Next(-20, 55),
-                        Summary = summaries[Random.Shared.Next(summaries.Length)]
-                    })
-                    .ToArray();
-                return forecast;
+                return udp.GetWelcomeMessage();
             })
-            .WithName("GetWeatherForecast")
+            .WithName("GetUserDashboardInfo")
             .WithOpenApi();
 
             app.Run();
+        }
+    }
+
+    public class ModernTenantDataAccess : ITenantDataAccess
+    {
+        public TenantInfo GetCurrentTenantInformation()
+        {
+            // logic to fetch Tenant info from Tenant Micro Service
+            return new TenantInfo();
+        }
+    }
+
+    public class ModernUserDataAccess : IUserDataAccess
+    {
+        public string GetCurrentUserName()
+        {
+            // New logic to fetch user info - from database or User Micro Service
+            return "Modern Dummy User";
         }
     }
 }

@@ -121,7 +121,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Core\LegacyState.cs" />
-    <Compile Include="Core\LegacyStateWrapper.cs" />
     <Compile Include="DataAccess\Adapters\TenantDataAccessAdapter.cs" />
     <Compile Include="DataAccess\Adapters\UserDataAccessAdapter.cs" />
     <Compile Include="DataAccess\TenantDataAccess.cs" />

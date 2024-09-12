@@ -20,11 +20,13 @@ namespace LegacyWebFormApp.Pages
 
             using (var scope = DIContainer.ServiceProvider.GetServiceScope())
             {
-                var stateFromContainer = scope.ServiceProvider.GetRequiredService<LegacyStateWrapper>();
-                stateFromContainer.SetInternalState(state);
+                var stateFromContainer = scope.ServiceProvider.GetRequiredService<LegacyState>();
+
+                stateFromContainer.UserId = state.UserId;
+                stateFromContainer.TenantId = state.TenantId;
+                stateFromContainer.DbConnection = state.DbConnection;
 
                 var userDashboardProvider = scope.ServiceProvider.GetRequiredService<UserDashboardProvider>();
-
                 var welcomeMessage = userDashboardProvider.GetWelcomeMessage();
 
                 this.lWelcomeMsg.Text = welcomeMessage;

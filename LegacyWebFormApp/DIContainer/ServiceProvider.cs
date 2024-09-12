@@ -28,8 +28,10 @@ namespace LegacyWebFormApp.DIContainer
                         coll.AddTransient<IUserDataAccess, UserDataAccessAdapter>();
 
                         coll.AddTransient<UserDashboardProvider>();
-                        coll.AddScoped<LegacyStateWrapper>();
-                        //coll.AddScoped<LegacyState, LegacyStateWrapper>();
+                        coll.AddScoped<LegacyState>();
+
+                        coll.AddScoped<UserDataAccess>();
+                        coll.AddScoped<TenantDataAccess>();
 
                         _provider = coll.BuildServiceProvider();
                     }

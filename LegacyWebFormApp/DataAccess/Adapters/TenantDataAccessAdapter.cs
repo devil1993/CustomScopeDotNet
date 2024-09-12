@@ -9,16 +9,16 @@ namespace LegacyWebFormApp.DataAccess.Adapters
 {
     public class TenantDataAccessAdapter : ITenantDataAccess
     {
-        private LegacyState state;
+        private TenantDataAccess tenantDataAccess;
 
-        public TenantDataAccessAdapter(LegacyStateWrapper state)
+        public TenantDataAccessAdapter(TenantDataAccess tenantDataAccess)
         {
-            this.state = state;
+            this.tenantDataAccess = tenantDataAccess;
         }
 
         public TenantInfo GetCurrentTenantInformation()
         {
-            return new TenantDataAccess(state).GetTenantInfo();
+            return tenantDataAccess.GetTenantInfo();
         }
     }
 }

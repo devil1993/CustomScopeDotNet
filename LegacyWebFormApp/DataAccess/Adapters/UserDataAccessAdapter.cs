@@ -9,15 +9,15 @@ namespace LegacyWebFormApp.DataAccess.Adapters
 {
     public class UserDataAccessAdapter : IUserDataAccess
     {
-        private readonly LegacyState state;
+        private readonly UserDataAccess userDataAccess;
 
-        public UserDataAccessAdapter(LegacyStateWrapper state)
+        public UserDataAccessAdapter(UserDataAccess userDataAccess)
         {
-            this.state = state;
+            this.userDataAccess = userDataAccess;
         }
         public string GetCurrentUserName()
         {
-            return (new DataAccess.UserDataAccess(state)).GetUserName();
+            return userDataAccess.GetUserName();
         }
     }
 }
